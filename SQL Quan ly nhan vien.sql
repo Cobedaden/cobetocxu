@@ -80,18 +80,6 @@ create table Danhsachnhanvien
 )
 go
 
-create table Danhsachcalam
-(
-	ID int identity primary key,
-	idCaLam int not null,
-	idNhanVien int not null,
-	count int not null default 0
-
-	foreign key (idCaLam) references Calamviec(ID),
-	foreign key (idNhanVien) references Danhsachnhanvien(ID)
-)
-go
-
 
 create table SoHieuMayBay
 (
@@ -112,17 +100,6 @@ create table WO
 )
 go
 
-
-create table DanhsachWO
-(
-	ID int identity primary key,
-	idNoidung int not null,
-	idAC int not null,
-
-	foreign key (idNoidung) references WO(ID),
-	foreign key (idAC) references SoHieuMayBay(ID)
-)
-go
 
 create table lichLV (
 	ID int identity primary key,
@@ -227,13 +204,6 @@ insert dbo.Danhsachnhanvien (NhomID,ChungChi,Name,Phone,Email,Ngayhethanchungchi
 
 update Danhsachnhanvien set Ngayhethanchungchi = N'20200924'
 
---Tạo csdl cho số hiệu máy bay ???
-insert dbo.Danhsachcalam(idCaLam,idNhanVien,count) values (1,6,1)
-insert dbo.Danhsachcalam(idCaLam,idNhanVien,count) values (1,9,1)
-insert dbo.Danhsachcalam(idCaLam,idNhanVien,count) values (2,10,1)
-insert dbo.Danhsachcalam(idCaLam,idNhanVien,count) values (2,24,1)
-insert dbo.Danhsachcalam(idCaLam,idNhanVien,count) values (3,46,1)
-
 --Tạo csdl cho số hiệu máy bay
 
 insert dbo.SoHieuMayBay(AC) values (N'VN-A278')
@@ -263,16 +233,6 @@ insert dbo.WO(manoidung,Noidung,ChungChi,Dungcu,AcID) values (69386,N'CENTERBODY
 insert dbo.WO(manoidung,Noidung,ChungChi,Dungcu,AcID) values (69411,N'"PROTECT. BREATHING EQPT (CKPT & CABIN) VISUAL CHECK OF THE TAMPER SEAL/SERVICEABILITY INDICATION OF THE PROTECTIVE BREATHING EQUIPMENT"',N'A',N'1-PULLER(IAE1P17038),1-TUBE(2A1212),3-PACKING(ST1946-107),1-TUBE(2A1211),1-PACKING(1-ST1946-110),1-SEAL(AS42714),1-WIRE(ST1003-06)',3)
 insert dbo.WO(manoidung,Noidung,ChungChi,Dungcu,AcID) values (69449,N'FIRE PROTECTION – CARGO DOOR SEALS – CLEANING / GREASING',N'A',N'1-PULLER(IAE1P17038),1-TUBE(2A1212),3-PACKING(ST1946-107),1-TUBE(2A1211),1-PACKING(1-ST1946-110),1-SEAL(AS42714),1-WIRE(ST1003-06)',3)
 insert dbo.WO(manoidung,Noidung,ChungChi,Dungcu,AcID) values (69495,N'ELECTRICAL FLIGHT CONTROL SYSTEM (EFCS)',N'A',N'1-PULLER(IAE1P17038),1-TUBE(2A1212),3-PACKING(ST1946-107),1-TUBE(2A1211),1-PACKING(1-ST1946-110),1-SEAL(AS42714),1-WIRE(ST1003-06)',3)
-
-
-
---Tạo csdl cho bảng danh sách wo
-insert dbo.DanhsachWO(idAC,idNoidung) values (1,1)
-insert dbo.DanhsachWO(idAC,idNoidung) values (1,2)
-insert dbo.DanhsachWO(idAC,idNoidung) values (1,3)
-insert dbo.DanhsachWO(idAC,idNoidung) values (1,4)
-insert dbo.DanhsachWO(idAC,idNoidung) values (2,8)
-insert dbo.DanhsachWO(idAC,idNoidung) values (3,15)
 
 
 
